@@ -12,6 +12,7 @@ export default function Contact() {
   
           {/* Main Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            
             {/* Left Section */}
             <div>
               <h2 className="text-2xl font-bold mb-4 text-[#151875]">Information About Us</h2>
