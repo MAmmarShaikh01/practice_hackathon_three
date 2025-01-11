@@ -2,6 +2,7 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import ProductDetailsClient from "./ProductDetailsClient";
 
+
 type prod = {
   _id: number;
   name: string;
