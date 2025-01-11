@@ -71,7 +71,7 @@ export default async function  ProductGrid() {
       {
         query.map((product:prod) => (
           
-<div className="relative group   overflow-hidden bg-white ">
+      <div className="relative group overflow-hidden bg-white ">
         <div className="bg-[#F6F7FB] p-4 flex justify-center items-center">
           <Image
             src={urlFor(product.imageUrl).url() || ""}

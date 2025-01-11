@@ -24,7 +24,7 @@ const page = async ({ params }: { params: { product: number } }) => {
       "imageUrl": image.asset->url,
       description
   }`);
-  let mn = query.filter((item: prod) => item._id == params.product);
+  const mn = query.filter((item: prod) => item._id == params.product);
 
   // Add to Cart function
   const addToCart = (id: number) => {
