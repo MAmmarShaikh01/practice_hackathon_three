@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { Heart, ShoppingCart } from 'lucide-react';
 import { FaSearchPlus } from 'react-icons/fa';
-import { client } from '@/sanity/lib/client';
 
 
 export default function ProductGrid() {

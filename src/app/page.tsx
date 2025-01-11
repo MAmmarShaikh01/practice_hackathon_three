@@ -11,7 +11,6 @@ import Trending1 from './components/Home/Trending1'
 import Trending2 from './components/Home/Trending2'
 import Discount from './components/Home/Discount'
 import Categories from './components/Home/Categories'
-import Blog from './components/Home/Blog'
 
 
 export default function page() {
