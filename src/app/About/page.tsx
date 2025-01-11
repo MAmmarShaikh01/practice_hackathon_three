@@ -6,9 +6,7 @@ export default function AboutUs() {
     <div className="min-h-screen ">
 <header className="text-center justify-center flex bg-[#F6F5FF] mb-12 h-32 sm:h-[286px] flex-col ">
             <h1 className="text-4xl font-bold text-[#151875] ml-2 ">About Us</h1>
-            <p className="text-[#8A8FB9] text-sm">
-             <Link href ="/"> Home &gt;</Link> <span className="text-blue-600">Contact Us</span>
-            </p>
+            
           </header>
      
       {/* Main Content */}

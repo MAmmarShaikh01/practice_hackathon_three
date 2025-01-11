@@ -25,7 +25,7 @@ export default function Header() {
           <Link href="./Accounts" className={style.dDowns}>Login <Image src="/img/user.svg" alt="image" width="13" height={10} ></Image></Link>
 
           {/* <Link href="./About" className={style.dDowns}>Wishlist <Image src="/img/heart.svg" alt="image" width="13" height={10} ></Image></Link> */}
-          <Link href="./" className={`${style.dDowns} ${style.space}`}>Cart <Image src="/img/cart.svg" alt="image" width="13" height={10} ></Image></Link>
+          <Link href="./cart" className={`${style.dDowns} ${style.space}`}>Cart <Image src="/img/cart.svg" alt="image" width="13" height={10} ></Image></Link>
         </div>
      </div>
       </>

@@ -37,6 +37,7 @@ const CheckoutPage = () => {
                 Full Name
               </label>
               <input
+              required
                 type="text"
                 name="fullName"
                 id="fullName"
@@ -44,7 +45,6 @@ const CheckoutPage = () => {
                 onChange={handleInputChange}
                 className="mt-2 block w-full p-3 border rounded-md focus:ring focus:ring-pink-500 focus:outline-none"
                 placeholder="Enter your full name"
-                required
               />
             </div>
 
@@ -53,6 +53,7 @@ const CheckoutPage = () => {
                 Email
               </label>
               <input
+              required
                 type="email"
                 name="email"
                 id="email"
@@ -60,7 +61,6 @@ const CheckoutPage = () => {
                 onChange={handleInputChange}
                 className="mt-2 block w-full p-3 border rounded-md focus:ring focus:ring-pink-500 focus:outline-none"
                 placeholder="Enter your email"
-                required
               />
             </div>
 
@@ -69,6 +69,7 @@ const CheckoutPage = () => {
                 Phone
               </label>
               <input
+              required
                 type="tel"
                 name="phone"
                 id="phone"
@@ -76,7 +77,6 @@ const CheckoutPage = () => {
                 onChange={handleInputChange}
                 className="mt-2 block w-full p-3 border rounded-md focus:ring focus:ring-pink-500 focus:outline-none"
                 placeholder="Enter your phone number"
-                required
               />
             </div>
 
@@ -85,6 +85,7 @@ const CheckoutPage = () => {
                 Address
               </label>
               <input
+              required
                 type="text"
                 name="address"
                 id="address"
@@ -92,7 +93,6 @@ const CheckoutPage = () => {
                 onChange={handleInputChange}
                 className="mt-2 block w-full p-3 border rounded-md focus:ring focus:ring-pink-500 focus:outline-none"
                 placeholder="Enter your address"
-                required
               />
             </div>
 
@@ -101,6 +101,7 @@ const CheckoutPage = () => {
                 City
               </label>
               <input
+              required
                 type="text"
                 name="city"
                 id="city"
@@ -108,7 +109,6 @@ const CheckoutPage = () => {
                 onChange={handleInputChange}
                 className="mt-2 block w-full p-3 border rounded-md focus:ring focus:ring-pink-500 focus:outline-none"
                 placeholder="Enter your city"
-                required
               />
             </div>
 
@@ -117,6 +117,7 @@ const CheckoutPage = () => {
                 Postal Code
               </label>
               <input
+              required
                 type="text"
                 name="postalCode"
                 id="postalCode"
@@ -124,7 +125,6 @@ const CheckoutPage = () => {
                 onChange={handleInputChange}
                 className="mt-2 block w-full p-3 border rounded-md focus:ring focus:ring-pink-500 focus:outline-none"
                 placeholder="Enter your postal code"
-                required
               />
             </div>
 
@@ -133,6 +133,7 @@ const CheckoutPage = () => {
                 Country
               </label>
               <input
+              required
                 type="text"
                 name="country"
                 id="country"
@@ -140,7 +141,6 @@ const CheckoutPage = () => {
                 onChange={handleInputChange}
                 className="mt-2 block w-full p-3 border rounded-md focus:ring focus:ring-pink-500 focus:outline-none"
                 placeholder="Enter your country"
-                required
               />
             </div>
 

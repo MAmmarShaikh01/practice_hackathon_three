@@ -58,6 +58,9 @@ export default function GeneralInformation() {
                   type="text"
                   placeholder="Your Name*"
                   required
+                  
+                  pattern="^(?:\w+\s?){3,20}$" 
+                  title="Enter a name with 3 to 20 words" 
                   className="w-full px-4 py-2 border rounded-lg focus:outline-none bg-white"
                 />
               </div>
