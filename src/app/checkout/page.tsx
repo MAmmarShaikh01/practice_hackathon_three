@@ -106,8 +106,8 @@ const CheckoutPage = () => {
               <input
                 required
                 type="tel"
-                pattern="^\d{13}$"
-                title="Enter a 13-digit phone number"
+                pattern="^\d{11,13}$"
+                title="Enter a valid phone number"
                 name="phone"
                 id="phone"
                 value={formData.phone}
@@ -123,7 +123,7 @@ const CheckoutPage = () => {
               </label>
               <input
                 required
-                pattern="^[a-zA-Z0-9]{15,}$"
+                pattern=".{3,20}"
                 title="Enter at least 15 characters"
                 type="text"
                 name="address"
