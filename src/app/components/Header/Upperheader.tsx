@@ -22,10 +22,10 @@ export default function Header() {
 
           {/* <p className={`${style.dDowns} ${style.disappear}`}>English <Image src="/img/down.svg" alt="image" width="13" height={10} ></Image></p> */}
 
-          <Link href="./Accounts" className={style.dDowns}>Login <Image src="/img/user.svg" alt="image" width="13" height={10} ></Image></Link>
+          <Link href="../Accounts" className={style.dDowns}>Login <Image src="/img/user.svg" alt="image" width="13" height={10} ></Image></Link>
 
           {/* <Link href="./About" className={style.dDowns}>Wishlist <Image src="/img/heart.svg" alt="image" width="13" height={10} ></Image></Link> */}
-          <Link href="./cart" className={`${style.dDowns} ${style.space}`}>Cart <Image src="/img/cart.svg" alt="image" width="13" height={10} ></Image></Link>
+          <Link href="../cart" className={`${style.dDowns} ${style.space}`}>Cart <Image src="/img/cart.svg" alt="image" width="13" height={10} ></Image></Link>
         </div>
      </div>
       </>

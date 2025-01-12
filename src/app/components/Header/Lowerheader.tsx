@@ -8,11 +8,11 @@ export default function Home() {
         <h1 className={style.logo}>Hekto</h1>
 
         <ul className={style.ul}>
-            <li className={style.li}> <Link className={style.links} href="./" > Home </Link></li>
-            <li className={style.li}> <Link className={style.links} href="./ShopGrid" > Products </Link></li>
-            <li className={style.li}> <Link className={style.links} href="./About" > About</Link></li>
-            <li className={style.li}> <Link className={style.links} href="./Contact" > Contact </Link></li>
-            <li className={style.li}> <Link className={style.links} href="./Faqs" > FAQs </Link></li>
+            <li className={style.li}> <Link className={style.links} href="../" > Home </Link></li>
+            <li className={style.li}> <Link className={style.links} href="../ShopGrid" > Products </Link></li>
+            <li className={style.li}> <Link className={style.links} href="../About" > About</Link></li>
+            <li className={style.li}> <Link className={style.links} href="../Contact" > Contact </Link></li>
+            <li className={style.li}> <Link className={style.links} href="../Faqs" > FAQs </Link></li>
         </ul>
         <div className={style.search}>
             <input className={style.input} type="search" placeholder="Search..."/>

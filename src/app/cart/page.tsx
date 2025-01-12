@@ -1,75 +1,65 @@
 'use client';
-
-import React, { useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { client } from "@/sanity/lib/client";
 
-type CartItem = {
-  id: number;
+interface CartItem {
+  _id: number;
   name: string;
   price: number;
-  quantity: number;
-  color: string;
-  size: string;
-  image: string;
+  description: string;
+  imageUrl: string;
+  quantity: number; // Assuming quantity is also needed
+}
+
+// Utility function to truncate description
+const truncateDescription = (description: string, wordLimit: number): string => {
+  const words = description.split(" ");
+  if (words.length > wordLimit) {
+    return words.slice(0, wordLimit).join(" ") + " ...";
+  }
+  return description;
 };
 
-const initialCartProducts: CartItem[] = [
-  {
-    id: 1,
-    name: "Ut diam",
-    price: 30,
-    quantity: 2,
-    color: "Red",
-    size: "M",
-    image: "/images/cart1.jpg",
-  },
-  {
-    id: 2,
-    name: "faucibus posuere",
-    price: 45,
-    quantity: 1,
-    color: "Blue",
-    size: "L",
-    image: "/images/cart2.jpg",
-  },
-  {
-    id: 3,
-    name: "Ac vitae vestibulum",
-    price: 60,
-    quantity: 1,
-    color: "Green",
-    size: "S",
-    image: "/images/cart3.jpg",
-  },
-  {
-    id: 4,
-    name: "Elit massa dia",
-    price: 50,
-    quantity: 2,
-    color: "Yellow",
-    size: "M",
-    image: "/images/cart4.jpg",
-  },
-  {
-    id: 5,
-    name: "Proin pharetra",
-    price: 35,
-    quantity: 3,
-    color: "Black",
-    size: "L",
-    image: "/images/cart5.jpg",
-  },
-
-];
-
 const Cart = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(initialCartProducts);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const updateQuantity = (id: number, newQuantity: number) => {
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const storedIds = JSON.parse(localStorage.getItem("cartItems") || "[]");
+
+        if (storedIds.length === 0) {
+          setCartItems([]);
+          return;
+        }
+
+        const products: CartItem[] = await client.fetch(`*[_type == "product"]{
+          _id,
+          name,
+          price,
+          "imageUrl": image.asset->url,
+          description
+        }`);
+
+        const filteredItems = products
+          .filter((product) => storedIds.includes(product._id))
+          .map((product) => ({ ...product, quantity: 1 }));
+
+        setCartItems(filteredItems);
+      } catch (error) {
+        console.error("Failed to fetch cart items:", error);
+      }
+    };
+
+    fetchCartItems();
+  }, []);
+
+  const updateQuantity = (_id: number, newQuantity: number) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
-        item.id === id
+        item._id === _id
           ? { ...item, quantity: newQuantity > 0 ? newQuantity : 1 }
           : item
       )
@@ -85,15 +75,42 @@ const Cart = () => {
 
   const clearCart = () => {
     setCartItems([]);
+    localStorage.removeItem("cartItems");
   };
 
   const resetCart = () => {
-    setCartItems(initialCartProducts);
+    const fetchCartItems = async () => {
+      try {
+        const storedIds = JSON.parse(localStorage.getItem("cartItems") || "[]");
+
+        if (storedIds.length === 0) {
+          setCartItems([]);
+          return;
+        }
+
+        const products: CartItem[] = await client.fetch(`*[_type == "product"]{
+          _id,
+          name,
+          price,
+          "imageUrl": image.asset->url,
+          description
+        }`);
+
+        const filteredItems = products
+          .filter((product) => storedIds.includes(product._id))
+          .map((product) => ({ ...product, quantity: 1 }));
+
+        setCartItems(filteredItems);
+      } catch (error) {
+        console.error("Failed to reset cart:", error);
+      }
+    };
+
+    fetchCartItems();
   };
 
   return (
     <>
-    
       <div className="p-6 lg:p-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
           <h2 className="text-2xl font-bold mb-6 text-[#1D3178]">Your Cart</h2>
@@ -101,12 +118,12 @@ const Cart = () => {
             <div className="space-y-6">
               {cartItems.map((item) => (
                 <div
-                  key={item.id}
+                  key={item._id}
                   className="flex items-center justify-between bg-white p-4 rounded-lg shadow-md flex-col md:flex-row"
                 >
                   <div className="flex items-center space-x-4">
                     <Image
-                      src={item.image}
+                      src={item.imageUrl}
                       alt={item.name}
                       width={80}
                       height={80}
@@ -115,7 +132,7 @@ const Cart = () => {
                     <div>
                       <p className="font-semibold text-[#1D3178]">{item.name}</p>
                       <p className="text-sm text-gray-500">
-                        Color: {item.color}, Size: {item.size}
+                        {truncateDescription(item.description, 10)}
                       </p>
                     </div>
                   </div>
@@ -125,8 +142,7 @@ const Cart = () => {
                       type="number"
                       value={item.quantity}
                       onChange={(e) =>
-                        updateQuantity(item.id, Number(e.target.value))
-                        
+                        updateQuantity(item._id, Number(e.target.value))
                       }
                       className="w-12 px-2 py-1 border rounded-md text-center"
                       min="1"
@@ -173,18 +189,17 @@ const Cart = () => {
             <span>${(calculateTotal() + 15).toFixed(2)}</span>
           </p>
           <li>
-                <Link href="/checkout">
-            <button
-              type="submit"
-              className="w-full py-3 bg-[#FB2E86] text-white rounded-md font-semibold hover:bg-pink-600"
-            >
-              Proceed To Checkout
-            </button>
+            <Link href="/checkout">
+              <button
+                type="submit"
+                className="w-full py-3 bg-[#FB2E86] text-white rounded-md font-semibold hover:bg-pink-600"
+              >
+                Proceed To Checkout
+              </button>
             </Link>
-            </li>
+          </li>
         </div>
       </div>
-      
     </>
   );
 };
