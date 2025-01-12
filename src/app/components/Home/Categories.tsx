@@ -48,7 +48,7 @@ export default async function TopCategories() {
             </button>
           </div>
           <h3 className="text-sm font-medium">
-            <Link href={`/product/${pr._id}`}>
+            <Link href={`/products/${pr._id}`}>
               {pr.name}
               </Link>
               </h3>
