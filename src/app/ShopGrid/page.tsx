@@ -25,7 +25,7 @@ export default async function ProductGrid() {
   return (
     <div>
       {/* Top Section */}
-      <header className="mb-8 flex flex-col sm:flex-row sm:justify-center items-center text-center gap-4 sm:gap-9 py-10">
+      {/* <header className="mb-8 flex flex-col sm:flex-row sm:justify-center items-center text-center gap-4 sm:gap-9 py-10">
         <h1 className="text-xl sm:text-lg text-[#151875] font-medium flex flex-col">
           Ecommerce Accessories & Fashion Item
           <span className="text-[#8A8FB9] text-sm text-left">
@@ -59,11 +59,15 @@ export default async function ProductGrid() {
             />
           </div>
         </div>
-      </header>
+      </header> */}
+
+<header className="text-center justify-center flex bg-[#F6F5FF] mb-12 h-32 sm:h-[286px] flex-col">
+            <h1 className="text-4xl font-bold text-[#151875] ml-2 ">Products</h1>
+          </header>
 
       {/* Product Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-10 my-20">
-        {/* Render Products */}
+        {/* Render Products dmmfnksdaskdkjasdmtjsfosdmgf;dnto;nfzd,fjkcsjjkknm*/}
         {query.map((product: prod) => (
           <div
             key={product._id} // Add the unique key prop here

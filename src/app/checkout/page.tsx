@@ -38,6 +38,8 @@ const CheckoutPage = () => {
               </label>
               <input
               required
+              pattern=".{3,20}" 
+       title="Enter at least 3 and at most 20 characters" 
                 type="text"
                 name="fullName"
                 id="fullName"

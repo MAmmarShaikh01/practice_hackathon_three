@@ -118,3 +118,27 @@
         display: none;
     }
 }
+.searchWrapper {
+    position: relative;
+  }
+  
+  .dropdown {
+    position: absolute;
+    top: 100%; /* Places the dropdown right below the input */
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 10;
+  }
+  
+  .dropdownItem {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .dropdownItem:hover {
+    background-color: #f0f0f0;
+  }
+  
