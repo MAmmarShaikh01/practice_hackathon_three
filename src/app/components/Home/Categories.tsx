@@ -51,7 +51,7 @@ export default async function TopCategories() {
             <Link href={`/product/${pr._id}`}>
               {pr.name}
               </Link>
-            {pr.name}</h3>
+              </h3>
           <p className="text-sm font-semibold text-gray-600">${pr.price}</p>
         </div>
       ))
