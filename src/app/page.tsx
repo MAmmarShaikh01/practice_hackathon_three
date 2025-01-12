@@ -10,6 +10,7 @@ import Offer from './components/Home/Offer'
 import Trending1 from './components/Home/Trending1'
 import Trending2 from './components/Home/Trending2'
 import Categories from './components/Home/Categories'
+import Link from 'next/link';
 
 
 export default function page() {
@@ -47,7 +48,10 @@ export default function page() {
     
 
     <button className="px-2 sm:px-6 py-2 sm:py-3 bg-[#FB2E86] text-white text-xs sm:text-xl rounded-sm sm:rounded-lg hover:bg-[#FB2f98] transition duration-200">
+      <Link href="/ShopGrid">
       Shop Now
+      </Link>
+
     </button>
   </div>
 </div>
