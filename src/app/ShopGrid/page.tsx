@@ -80,7 +80,7 @@ export default async function ProductGrid() {
             </div>
             <div className="bg-white p-4 flex flex-col justify-between h-24">
               <Link
-                href=""
+                href={`/products/${product._id}`}
                 className="text-lg font-bold text-[#151875] mb-1 truncate text-center"
               >
                 {product.name}
