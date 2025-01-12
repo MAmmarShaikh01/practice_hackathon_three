@@ -1,9 +1,21 @@
 'use client';
-import Link from "next/link";
-import React, { useState } from "react";
+
+import { useRouter } from "next/navigation"; // Use this for navigation
+import React, { useState, useEffect } from "react";
+
+interface FormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  country: string;
+  paymentMethod: string;
+}
 
 const CheckoutPage = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
     phone: "",
@@ -14,19 +26,40 @@ const CheckoutPage = () => {
     paymentMethod: "creditCard",
   });
 
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const router = useRouter();
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  useEffect(() => {
+    const isValid =
+      formData.fullName.trim() !== "" &&
+      formData.email.trim() !== "" &&
+      formData.phone.trim() !== "" &&
+      formData.address.trim() !== "" &&
+      formData.city.trim() !== "" &&
+      formData.postalCode.trim() !== "" &&
+      formData.country.trim() !== "";
+
+    setIsFormValid(isValid);
+  }, [formData]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Order Placed Successfully!");
+
+    if (isFormValid) {
+      alert("Order Placed Successfully!");
+      router.push("/ordercompleted"); // Navigate to the order completed page
+    } else {
+      alert("Please fill in all the required fields correctly.");
+    }
   };
 
   return (
     <>
-    
       <div className="min-h-screen bg-gray-50 py-12 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 lg:p-12">
           <h1 className="text-3xl font-bold text-center text-[#1D3178] mb-8">Billing Information</h1>
@@ -37,9 +70,9 @@ const CheckoutPage = () => {
                 Full Name
               </label>
               <input
-              required
-              pattern=".{3,20}" 
-       title="Enter at least 3 and at most 20 characters" 
+                required
+                pattern=".{3,20}"
+                title="Enter at least 3 and at most 20 characters"
                 type="text"
                 name="fullName"
                 id="fullName"
@@ -55,7 +88,7 @@ const CheckoutPage = () => {
                 Email
               </label>
               <input
-              required
+                required
                 type="email"
                 name="email"
                 id="email"
@@ -71,8 +104,10 @@ const CheckoutPage = () => {
                 Phone
               </label>
               <input
-              required
+                required
                 type="tel"
+                pattern="^\d{13}$"
+                title="Enter a 13-digit phone number"
                 name="phone"
                 id="phone"
                 value={formData.phone}
@@ -87,7 +122,9 @@ const CheckoutPage = () => {
                 Address
               </label>
               <input
-              required
+                required
+                pattern="^[a-zA-Z0-9]{15,}$"
+                title="Enter at least 15 characters"
                 type="text"
                 name="address"
                 id="address"
@@ -103,9 +140,10 @@ const CheckoutPage = () => {
                 City
               </label>
               <input
-              required
+                required
                 type="text"
                 name="city"
+                pattern="^[a-zA-Z0-9]{3,}$"
                 id="city"
                 value={formData.city}
                 onChange={handleInputChange}
@@ -119,7 +157,7 @@ const CheckoutPage = () => {
                 Postal Code
               </label>
               <input
-              required
+                required
                 type="text"
                 name="postalCode"
                 id="postalCode"
@@ -135,7 +173,7 @@ const CheckoutPage = () => {
                 Country
               </label>
               <input
-              required
+                required
                 type="text"
                 name="country"
                 id="country"
@@ -164,21 +202,18 @@ const CheckoutPage = () => {
               </select>
             </div>
 
-           
-            <li>
-                <Link href="/ordercompleted">
             <button
               type="submit"
-              className="w-full py-3 bg-[#FB2E86] text-white rounded-md font-semibold hover:bg-pink-600"
+              disabled={!isFormValid}
+              className={`w-full py-3 text-white rounded-md font-semibold ${
+                isFormValid ? "bg-[#FB2E86] hover:bg-pink-600" : "bg-gray-400 cursor-not-allowed"
+              }`}
             >
               Place Order
             </button>
-            </Link>
-            </li>
           </form>
         </div>
       </div>
-      
     </>
   );
 };

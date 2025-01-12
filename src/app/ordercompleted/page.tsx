@@ -31,7 +31,7 @@ function OrderCompleted() {
             You will receive an email confirmation when your order is completed.
           </p>
 
-          <Link href="/shoplist">
+          <Link href="../ShopGrid">
           <button className="bg-[#FB2E86] text-white px-6 py-2 rounded-md text-lg font-medium my-8">
             Continue Shopping
           </button>
