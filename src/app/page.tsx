@@ -9,7 +9,6 @@ import Leatest from './components/Home/Leatest'
 import Offer from './components/Home/Offer'
 import Trending1 from './components/Home/Trending1'
 import Trending2 from './components/Home/Trending2'
-import Discount from './components/Home/Discount'
 import Categories from './components/Home/Categories'
 
 
@@ -29,7 +28,6 @@ export default function page() {
 <br/>
 <Trending2/>
 <br/>
-<Discount/>
 <br/>
 <Categories/>
 {/* letaest updte */}

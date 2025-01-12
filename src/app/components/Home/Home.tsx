@@ -40,7 +40,7 @@ function HeroSection() {
           {slide.description}
         </p>
         <Link
-          href="#"
+          href="../ShopGrid"
           className="inline-block bg-pink-500 text-white md:align-middle text-sm font-medium py-3  px-6 rounded-md mt-6 hover:bg-pink-600 transition-all duration-300 w-1/3 text-center"
         >
           {slide.buttonText}

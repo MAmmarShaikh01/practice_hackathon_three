@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ProductFeature() {
     return (
@@ -45,7 +46,7 @@ export default function ProductFeature() {
   
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <button className="bg-[#F52B70] text-white px-6 py-2 rounded-md hover:bg-[#d02159]">
-                Add To Cart
+                <Link href = "../ShopGrid"> Shop now</Link>
               </button>
               <div className="space-y-1">
                 <h3 className="font-semibold text-[#151875]">B&B Italian Sofa</h3>
